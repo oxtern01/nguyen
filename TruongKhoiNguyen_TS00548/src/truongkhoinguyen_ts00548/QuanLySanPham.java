@@ -4,8 +4,6 @@
  */
 package truongkhoinguyen_ts00548;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -215,33 +213,18 @@ public class QuanLySanPham extends javax.swing.JFrame {
 
     private void btnFakeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFakeDataActionPerformed
         // TODO add your handling code here:
-        model.setRowCount(0);
-        
     }//GEN-LAST:event_btnFakeDataActionPerformed
 
     private void btnGhiFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGhiFileActionPerformed
-        // TODO add your handling code here:
+        XFile.writeObject("src/Files/SanPham.dat", sanphams);
             
     }//GEN-LAST:event_btnGhiFileActionPerformed
 
     private void btnMoFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoFileActionPerformed
-        // TODO add your handling code here:
-        String path = txtTenFile.getText();
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            while(true){
-                String line = br.readLine();
-                if (line==null) {
-                    break;
-                } else {
-                    txtnoidung.append(line);
-                    txtnoidung.append("\r\n");
-                }
-            }
-            br.close();
-            JOptionPane.showMessageDialog(this, "doc file thanh cong");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "loi doc file");
+        sanphams = (ArrayList<SanPham>) XFile.readObject("src/Files/SanPham.dat");
+        if(sanphams == null)
+        {
+            sanphams = new ArrayList<>();
         }
     }//GEN-LAST:event_btnMoFileActionPerformed
 
