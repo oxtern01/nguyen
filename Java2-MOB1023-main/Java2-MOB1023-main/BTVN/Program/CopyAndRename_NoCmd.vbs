@@ -1,0 +1,1 @@
+CreateObject("Wscript.Shell").Run "CopyAndRename.bat", 0, True
